@@ -49,7 +49,7 @@ div .titulos p{
 	height: 100%;
 }
 
-.fondo .menuPalabra{
+.fondo #menuPalabra{
 	float: right;
 	margin-right: 45px;
 	margin-top:35px;
@@ -58,6 +58,7 @@ div .titulos p{
 	height: 30px;
 	text-align: center;
 	transform: rotateZ(90deg);
+	cursor: pointer;
 
 }
 
@@ -71,7 +72,7 @@ div .titulos p{
 	position: absolute;
 	top:0px;
 	top:0px;
-	/*display:none;*/
+	display:none;
 }
 
 .cajas{
@@ -117,4 +118,17 @@ div .titulos p{
 	color: grey;
 	padding-bottom: 15px;
 	padding-right: 30px;
+}
+
+.menuPalabra #close{
+	float: right;
+	right: 45px;
+	top:35px;
+	color:white;
+	width: 10px;
+	height: 30px;
+	text-align: center;
+	transform: rotateZ(90deg);
+	cursor: pointer;
+	position: absolute;
 }
