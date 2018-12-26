@@ -16,3 +16,4 @@ btnClose.addEventListener('click', cierreMenu);
 function cierreMenu(e){
 	$('.menu').fadeOut(1000);
 }
+

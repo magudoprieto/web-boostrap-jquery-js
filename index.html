@@ -11,54 +11,42 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<div class="fondo">
-		
-	<!--Pagina principal-->
-		
-		<div class="logo"><img src="images/logo-white@2x.png" alt="logo"></div>
-		<div id="menuPalabra"><span id="selector">menu</span></div>
-
-		<div class="titulos">
-			<h1>The Entertainment</h1>
-			<p>Exposición visual sobre el desarrollo web</p>
-		</div>
-		
-
-	<!--Pagina principal menu-->	
-
-		<div class="menu">
-			<div class="logo"><img src="images/logo-white@2x.png" alt="logo"></div>
-			<div class="menuPalabra"><span id="close">close</span></div>
-
-		<div class="cajas">
-			<ul class="lista">
-				<li><a href="">HOME</a></li>
-				<li><a href="">ARTIST</a></li>
-				<li><a href="">GALLERY</a></li>
-				<li><a href="">EVENTS</a></li>
-				<li><a href="">CONTACT</a></li>
-
-			</ul>
-		</div>
-
-		<div class="cajas">
-			<div class="parrafos">
-				<h4>adress</h4>
-				<p>Sage Cuktura LG. 905 E 205 Street. Los Angeles CA</p>
-			
-				<h4>visit the gallery</h4>
-				<p>Book at appoinment</p>
-			
-				<h4>current event</h4>
-				<p>Form of Memory sep 29th, nov 4th 2018</p>
+	<div class="fondo container-fluid">
+		<div class="row">
+			<div class="col-3">
+				<img id="logo" class="mt-2 ml-2" src="./images/logo-white@2x.png">
+			</div>
+			<div class="col-3 offset-6 text-white">
+				<p id="selector">menu</p>			
 			</div>
 		</div>
-		
+		<div class="row">
+			<h1 class="text-white text-center col-12">The Entertainment</h1>
+		</div>
+	</div>
 
-		</div>	
+<!-- pagina menu -->
 
+	<div class=" fondodos container-fluid menu">
+		<div class="row">
+				<div class="col-3">
+					<img id="logo" class="mt-2 ml-2" src="./images/logo-white@2x.png">
+				</div>
+				<div class="col-3 offset-6 text-white">
+					<p id="close">cerrar</p>			
+				</div>
+		</div>
 
-
+		<div class="row">
+			<div class="pt-3 text-white text-center col-12">
+				<ul class="pb-5">
+						<li><a class="text-white" href="#">INICIO</a></li>
+						<li><a class="text-white" href="desarrollo.html">DESARROLLO</a></li>
+						<li><a class="text-white" href="diseño.html">DISEÑO</a></li>
+						<li><a class="text-white" href="contacto.html">CONTACTO</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 		
 	
