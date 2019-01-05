@@ -1,29 +1,62 @@
 //abrir foto
 
-var btnFoto = document.querySelector('foto');
-btnFoto.addEventListener('click', cambiarMenu);
 
+$('.foto').on('click',function(){
+	
+	
+	switch($(this).attr('src')){
+		case './images/minis/mini1.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/arquitectura1.jpg');
+		break;
 
-function cambiarMenu(e){
-	$('.fondogaleria').fadeIn(1000).css('display','block');
+		case './images/minis/mini2.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/arquitectura2.jpg');
+		break;
+
+		case './images/minis/mini3.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/arquitectura3.jpg');
+		break;
+
+		case './images/minis/mini4.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/arquitectura4.jpg');
+		break;
+
+		case './images/minis/mini5.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/paisaje1.jpg');
+		break;
+
+		case './images/minis/mini6.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/paisaje2.jpg');
+		break;
+
+		case './images/minis/mini7.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/paisaje3.jpg');
+		break;
+
+		case './images/minis/mini8.jpg':
+		$('.fotoGrande').attr('src','./images/maxis/paisaje4.jpg');
+		break;
+	}
+	setTimeout( ()=>{
+		$('.fondogaleria').fadeIn(1000).css('display','block');
+		$('.fotoGrande').fadeIn(1000).css('display','inline');
+		$('.negro').fadeOut(1000);
+	},500);
 	
-	//let fotosMini = $('.foto');
-	console.log(fotosMini);
-	
-	$('.negro').fadeOut(1000);
-}
+
+});
+
 
 //cierre galeria
-
-var btnCierre = document.querySelector('.fondogaleria');
-btnCierre.addEventListener('click', cierreGaleria);
-
-function cierreGaleria(e){
-    $('.fondogaleria').fadeOut(1000);
-	$('.negro').fadeIn(1000);
-}
+$('.fondogaleria').on('click',function(){
+	setTimeout(()=>{
+		$('.fondogaleria').fadeOut(500);
+		$('.negro').fadeIn(500);
+	},500);	
+});
 
 
 
 
-let fotosMax = new Array('../images/maxis/arquitectura1.jpg','../images/maxis/arquitectura2.jpg','../images/maxis/arquitectura3.jpg','../images/maxis/arquitectura1.jpg','../images/maxis/paisaje1.jpg','../images/maxis/paisaje2.jpg','../images/maxis/paisaje3.jpg','../images/maxis/paisaje4.jpg');
+
+
