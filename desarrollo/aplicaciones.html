@@ -5,39 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../desarrollo/estilosdesarrollo.css"/>
 </head>
 <body>
     <!-- Calculadora -->
-<div class="wrapper">   
-    <div class="caja">
-        <h2>Calcular la base imponible del IVA</h2>
-        <p>Escribe el total de la factura, y marcando el tipo te calculará la base imponible.</p>
-        <form>
-            <input type="text" id="calcu"/>
-            <select name="seleccion">
-                <option value="21">21</option>
-                <option value="10">10</option>
-                <option value="4">4</option>
-            </select>
-            <button type="button" id="boton">Calcular</button>
-            
-        </form>
-        <div class="muestra"></div>
-    </div>
+<div class="container bg-dark">  
+        <div class="row mx-auto"> 
+            <div class="caja col-12 col-md-6">
+                <h2>Calcular la base imponible del IVA</h2>
+                <p>Escribe el total de la factura, y marcando el tipo te calculará la base imponible.</p>
+                <form>
+                    <input type="text" id="calcu"/>
+                    <select name="seleccion">
+                        <option value="21">21</option>
+                        <option value="10">10</option>
+                        <option value="4">4</option>
+                    </select>
+                    <button type="button" id="boton">Calcular</button>
+                    
+                </form>
+                <div class="muestra"></div>
+            </div>
 
-    <!-- Letra del DNI -->
-     <div class="caja"> 
-            <h2>Comprueba letra del DNI</h2>
-            <p>Escribe un número de DNI y el programa te dirá que letra le corresponde.</p>  
-        <form>
-            <input type="text" id="numero" minlength="8" maxlength="8"/>
-            <button type="button" id="letra">Letra</button>
-            </form>
-            <div class="completo"></div>
-        </form>
-    </div>
-</div>
+            <!-- Letra del DNI -->
+             <div class="caja col-12 col-md-6"> 
+                    <h2>Comprueba letra del DNI</h2>
+                    <p>Escribe un número de DNI y el programa te dirá que letra le corresponde.</p>  
+                <form>
+                    <input type="text" id="numero" minlength="8" maxlength="8"/>
+                    <button type="button" id="letra">Letra</button>
+                    </form>
+                    <div class="completo"></div>
+                </form>
+            </div>
+        </div>
+        <div class="row mx-auto">
+
+            <!-- Potencias -->
+            <div class="caja col-12 col-md-6"> 
+                <h2>Potencias</h2>
+                <p>Escribe un número base, un exponente, y el programa te dará el resultado de la potencia.</p>  
+                <form>
+                    <input type="text" id="numeroUno"/>
+                    <input type="text" id="numeroDos"/>
+                    <label for="boton">
+                    <button type="button" name="boton" id="calcular">Calcular</button>
+                    </label>
+                    </form>
+                    <div class="resultado"></div>
+                </form>
+            </div>
+            <div class="caja col-12 col-md-6"> 
+                    <h2>Binarios</h2>
+                    <p>Escribe un número en sistema decimal y el programa lo pasará a binario.</p>  
+                    <form>
+                        <input type="text" id="decimal"/>
+                        <button type="button" id="binariar">Binariar</button>
+                        </form>
+                        <div class="muestraBinario"></div>
+                    </form>
+            </div>
+        </div>
+        </div>
     <script type="text/javascript" src="../js/jquery3.3.1min.js"></script>
     <script type="text/javascript" src="aplicaciones.js"></script>
 </body>

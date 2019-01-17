@@ -4,16 +4,10 @@
     box-sizing: border-box;
 }
 
-.wrapper{
-    margin:0 auto;
-    margin-top:10px;
-    width: 600px;
-    background-color: aqua;
-    border: 5px solid green;
-    padding:15px;
-}
+
 
 .caja{
+    background-color: white;
     text-align: center;
     margin:0 auto;
     margin-top:50px;
@@ -28,5 +22,5 @@ p{
 
 input[type='text']{
     height: 40px;
-    width: 300px;
+    width: 200px;
 }

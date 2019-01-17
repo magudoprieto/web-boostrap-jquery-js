@@ -20,7 +20,9 @@ function calcular(){
         porcentaje = 1.04;
         break;
     }
+
     baseImponible = total/porcentaje;
+
     $('.muestra').text(`La base imponible de tu cifra total es: ${(baseImponible.toFixed(2))}`);
 }
 
@@ -30,8 +32,10 @@ $('#letra').on('click',function(){
     numero = parseInt($('#numero').val());
     if(isNaN(numero)){
         alert('Tienes que introducir un número válido');
+    }else{
+        comprobarLetra();
     }
-    comprobarLetra(); 
+     
 });
 
 var todasLetras = new Array('T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E');
@@ -47,5 +51,31 @@ function comprobarLetra(){
 }
 
 
+//Potencias
+
+var numeroUno;
+var numeroDos;
+var resultado = 0;
+
+$('#calcular').on('click',function(){
+    numeroUno = parseInt($('#numeroUno').val());
+    numeroDos = parseInt($('#numeroDos').val());
+    resultado = Math.pow(numeroUno,numeroDos);
+    $('.resultado').text(`El resultado es de: ${resultado}`);
+});
 
 
+
+//binarios
+
+$('#binariar').on('click',function(){
+    var numeroDecimal = parseInt($('#decimal').val());
+    var binario = new Array();
+    while(numeroDecimal != 1){
+        binario.push(numeroDecimal%2);
+        numeroDecimal = parseInt(numeroDecimal/2);
+    }
+    binario.push(1);
+    $('.muestraBinario').text((binario.join('')));
+    
+});
