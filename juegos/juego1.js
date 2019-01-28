@@ -1,111 +1,82 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, render: render });
 
 function preload() {
 
-    game.load.image('phaser', 'assets/fondo.jpg');
-    game.load.image('bullet', 'assets/fondo.jpg');
-    game.load.spritesheet('veggies', 'assets/sprites/fruitnveg32wh37.png', 32, 32);
+    game.load.image('set0', 'assets/atlas/megasetHD-0.png');
+    game.load.image('set1', 'assets/atlas/megasetHD-1.png');
+    game.load.image('set2', 'assets/atlas/megasetHD-2.png');
+    game.load.image('set3', 'assets/atlas/megasetHD-3.png');
+
+    game.load.json('data0', 'assets/atlas/megasetHD-0.json');
+    game.load.json('data1', 'assets/atlas/megasetHD-1.json');
+    game.load.json('data2', 'assets/atlas/megasetHD-2.json');
+    game.load.json('data3', 'assets/atlas/megasetHD-3.json');
 
 }
 
-var sprite;
-var bullets;
-var veggies;
-var cursors;
-
-var bulletTime = 0;
-var bullet;
+var manager;
+var texture;
+var frame;
+var x = 0;
+var y = 0;
+var anchor = new Phaser.Point();
 
 function create() {
 
-    game.stage.backgroundColor = '#2d2d2d';
+    manager = new Phaser.TextureManager(game);
 
-    //  This will check Group vs. Group collision (bullets vs. veggies!)
+    texture = manager.addAtlasJSONArray(
+        'megaset',
+        [
+            game.cache.getImage('set0'),
+            game.cache.getImage('set1'),
+            game.cache.getImage('set2'),
+            game.cache.getImage('set3')
+        ],
+        [
+            game.cache.getJSON('data0'),
+            game.cache.getJSON('data1'),
+            game.cache.getJSON('data2'),
+            game.cache.getJSON('data3')
+        ]
+    );
 
-    veggies = game.add.group();
-    veggies.enableBody = true;
-    veggies.physicsBodyType = Phaser.Physics.ARCADE;
+    //  This frame is in the 1st atlas file (set0/data0)
+    // frame = texture.get('aya_touhou_teng_soldier');
 
-    for (var i = 0; i < 50; i++)
-    {
-        var c = veggies.create(game.world.randomX, Math.random() * 500, 'veggies', game.rnd.integerInRange(0, 36));
-        c.name = 'veg' + i;
-        c.body.immovable = true;
-    }
+    //  This frame is in the 2nd atlas file (set1/data1)
+    // frame = texture.get('oz_pov_melting_disk');
 
-    bullets = game.add.group();
-    bullets.enableBody = true;
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    //  This frame is in the 3rd atlas file (set2/data2)
+    // frame = texture.get('budbrain_chick');
 
-    for (var i = 0; i < 20; i++)
-    {
-        var b = bullets.create(0, 0, 'bullet');
-        b.name = 'bullet' + i;
-        b.exists = false;
-        b.visible = false;
-        b.checkWorldBounds = true;
-        b.events.onOutOfBounds.add(resetBullet, this);
-    }
+    //  This frame is in the 4th atlas file (set3/data3)
+    // frame = texture.get('shocktroopers_toy');
 
-    sprite = game.add.sprite(400, 550, 'phaser');
-    game.physics.enable(sprite, Phaser.Physics.ARCADE);
+    // frame = manager.get('megaset', 'aya_touhou_teng_soldier');
+    frame = manager.getFrame('megaset', 'aya_touhou_teng_soldier');
 
-    cursors = game.input.keyboard.createCursorKeys();
-    game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
-
-}
-
-function update() {
-
-    //  As we don't need to exchange any velocities or motion we can the 'overlap' check instead of 'collide'
-    game.physics.arcade.overlap(bullets, veggies, collisionHandler, null, this);
-
-    sprite.body.velocity.x = 0;
-    sprite.body.velocity.y = 0;
-
-    if (cursors.left.isDown)
-    {
-        sprite.body.velocity.x = -300;
-    }
-    else if (cursors.right.isDown)
-    {
-        sprite.body.velocity.x = 300;
-    }
-
-    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
-    {
-        fireBullet();
-    }
+    // console.log(texture);
+    // console.log(texture.frames);
+    // console.log(frame);
 
 }
 
-function fireBullet () {
+function render () {
 
-    if (game.time.now > bulletTime)
-    {
-        bullet = bullets.getFirstExists(false);
+    var dx = frame.x - anchor.x * frame.width;
+    var dy = frame.y - anchor.y * frame.height;
 
-        if (bullet)
-        {
-            bullet.reset(sprite.x + 6, sprite.y - 8);
-            bullet.body.velocity.y = -300;
-            bulletTime = game.time.now + 150;
-        }
-    }
-
-}
-
-//  Called if the bullet goes out of the screen
-function resetBullet (bullet) {
-
-    bullet.kill();
-
-}
-
-//  Called if the bullet hits one of the veg sprites
-function collisionHandler (bullet, veg) {
-
-    bullet.kill();
-    veg.kill();
+    game.context.drawImage(
+        frame.source.image,
+        frame.cutX,
+        frame.cutY,
+        frame.cutWidth,
+        frame.cutHeight,
+        x + dx,
+        y + dy,
+        frame.cutWidth,
+        frame.cutHeight
+    );
 
 }

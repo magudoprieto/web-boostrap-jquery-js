@@ -15,6 +15,10 @@ h1{
 	padding:18%;
 }
 
+h5{
+	text-align: center;
+	color:white;
+}
 /*pagina menu*/
 
 .fondodos{
@@ -36,16 +40,17 @@ div ul{
 div ul li{
 	padding-top: 5%;
 	font-size: 2rem;
+	list-style: none!important;
 }
 
 div ul li a{
 	text-decoration: none!important;
-	list-style: none!important;
+	
 }
 
 div ul li a:hover{
-	text-decoration: none!important;
-	list-style: none!important;
+	transition: 1s;
+	color: aqua!important;
 }
 
 /*pagina desarrollo*/
@@ -58,9 +63,18 @@ div ul li a:hover{
 
 .negro{
 	width: 100%;
-	height: auto;
+	height: 100%;
 	background-color: black;
-	
+}
+
+h6{
+	font-size: 1.5rem;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.tec{
+	list-style: none;
 }
 
 #foto{
